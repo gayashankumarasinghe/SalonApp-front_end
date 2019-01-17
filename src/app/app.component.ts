@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-
+import { AuthenticationService } from './Services/authentication.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -29,21 +29,13 @@ export class AppComponent implements OnInit {
   animal?;
   openLogin=false;
 
-  user:Object = {
-    firstName: '',
-    lastName: '',
+  user = {
     userName: '',
     email: '',
     password: '',
-    role: ''
+    confirm: ''
   };
 
-  firstNameFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-  lastNameFormControl = new FormControl('', [
-    Validators.required,
-  ]);
   userNameFormControl = new FormControl('', [
     Validators.required,
   ]);
@@ -64,7 +56,8 @@ export class AppComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(public dialog: MatDialog, private router: Router, private changeDetectorRef: ChangeDetectorRef, private media: MediaMatcher, public route: ActivatedRoute ) {
+  constructor(public dialog: MatDialog, private router: Router, private changeDetectorRef: ChangeDetectorRef,
+     private media: MediaMatcher, public route: ActivatedRoute, public authentication: AuthenticationService ) {
 
       this.mobileQuery = media.matchMedia('(max-width: 767px)');
       this.largeQuery = media.matchMedia('(max-width: 767px)');
@@ -101,45 +94,30 @@ export class AppComponent implements OnInit {
     this.userClicked = !this.userClicked;
   }
 
-  getUserName(){
-   
-  }
-
-  removeIt(){
-    this.userCollapsed = true;
-    this.userClicked = false;
-  }
-
-  notification() {
-    setTimeout(() => {
-      this.router.navigate(['notification']);
-    }, 100);
-  }
-
-  users() {
-    this.toggleUser();
-    this.router.navigate(['user/personal-data']);
-  }
-
-  profilePic() {
-    setTimeout(() => {
-      this.router.navigate(['/']);
-      this.toggleUser();
-    }, 100);
-  }
-
   howItWorks() {
-    this.router.navigate(['dashboard']);
+    //howITWorks navigation menu function here
   }
-
-
-  signUp() {
-    this.router.navigate(['service']);
-  }
-
 
   postAJob(){
-    this.router.navigate(['pricing']);
+    //postajob button function here
+  }
+
+  //login & signup functions
+  stylist(){
+    this.user.userName= this.userNameFormControl.value;
+    this.user.email= this.emailFormControl.value;
+    this.user.password= this.passwordFormControl.value;
+    this.user.confirm = this.confPasswordFormControl.value;
+
+    this.authentication.registerStylist(this.user).subscribe(result=>{
+      console.log(result);
+    });
+  }
+  salon(){
+    //signup as a salon function here
+  }
+  login(){
+    //login function for any user here
   }
 
  
