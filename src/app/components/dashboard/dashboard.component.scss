@@ -1,0 +1,55 @@
+.dashboard{
+	position: relative;
+	min-height: 700px;
+	margin: 0 auto;
+	height: 100%; 
+  	background: url("../../../assets/dashboard.jpg");
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+	background-size: cover;
+}
+
+.layer{
+	background-color: #171717;
+	opacity: 0.7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+	height: 100%;
+}
+
+.dashboard-list{
+	position: relative;
+	top: 130px;
+    text-align: end;
+	padding: 5%;
+}
+
+.dashboard-list li{
+	padding: 20px;
+}
+
+.scissor{
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	height: 60px;
+	right:6%;
+	width: auto;
+	cursor: pointer;
+}
+
+.dashboard-btn{
+	position: relative;
+	color:white;
+	padding:20px;
+	font-size:1em;
+	margin: 0 auto;
+	text-align: center;
+	min-width: 200px;
+	border-radius: 10px;
+	cursor: pointer;
+	outline: none;
+}

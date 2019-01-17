@@ -1,0 +1,34 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+body{
+    min-width: 450px;
+}
+@font-face {
+    font-family: 'MontserratAlternates';
+    src: url(./assets/Fonts/MontserratAlternates-Regular.otf) format("opentype");
+    font-weight:100;
+}
+
+@font-face {
+    font-family: 'segoe-regular';
+    src: url(./assets/Fonts/segoe-ui.ttf) format("truetype");
+    font-weight:100;
+}
+
+@font-face {
+    font-family: 'segoe-semibold';
+    src: url(./assets/Fonts/seguisb.ttf) format("truetype");
+    font-weight:100;
+}

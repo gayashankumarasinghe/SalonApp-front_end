@@ -1,20 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes }from '@angular/router';
+import { MaterialModule } from './modules/material.module';
+import { Observable } from 'rxjs/Observable';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignUpSaloonComponent } from './components/sign-up-saloon/sign-up-saloon.component';
-import { SignUpStylistComponent } from './components/sign-up-stylist/sign-up-stylist.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StylistComponent } from './components/stylist/stylist.component';
+import { CustomerComponent } from './components/customer/customer.component';
 
 
 const appRoutes : Routes = [
   
     {path:'',component:DashboardComponent},
-    {path:'login',component:LoginComponent},
+    {path:'stylist',component:StylistComponent},
+    {path:'customer',component:CustomerComponent},
 ];
 
 
@@ -22,17 +27,20 @@ const appRoutes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    LoginComponent,
-    SignUpSaloonComponent,
-    SignUpStylistComponent,
-    DashboardComponent
+    DashboardComponent,
+    StylistComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);

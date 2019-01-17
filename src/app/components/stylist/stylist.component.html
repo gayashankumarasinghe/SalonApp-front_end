@@ -1,0 +1,76 @@
+<div class="stylist">
+  <div class="layer">
+   
+  </div>
+  <div class="middle-text">
+      <div class="middle-line">
+        <h1>140,000 + hairs available to be<br>Styled By You!</h1>
+      </div>
+      <div class="bottom-line">
+        <a>Browse Top Rated Jobs available to get hired!</a>
+      </div>
+    </div>
+</div>
+<div class="stylist-content">
+  <div class="adjustments">
+      <mat-card class="material-card">
+          <mat-card-header>
+            <mat-card-title>Filter your jobs</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ul style="list-style:none; position:relative; display:block; left:-20px;">
+              <li>
+                <label for="firstSlider">Price</label><br>
+                <mat-slider #firstSlider></mat-slider>
+              </li>
+              <li>
+                  <label for="secondSlider">Distance</label><br>
+                  <mat-slider #secondSlider></mat-slider>
+                </li>
+                <li>
+                    <label for="thirdSlider">Time</label><br>
+                    <mat-slider #thirdSlider></mat-slider>
+                  </li>
+            </ul>
+          </mat-card-content>
+      </mat-card>
+  </div>
+  <div class="results">
+      <mat-spinner *ngIf="showSpinner" [mode]="Indeterminate">
+        </mat-spinner>
+        
+        <mat-card *ngFor="let job of jobs" class="materialcard">
+          <mat-card-header>
+            
+            <mat-card-title>{{job.name}}</mat-card-title>
+            <mat-card-subtitle style="color:dodgerblue">{{job.distance}}</mat-card-subtitle>
+            <div> 
+                <img  class="search-img" src="assets/pic.jpg">
+              </div>
+          </mat-card-header>
+          <mat-card-content>
+            <ul class="jobs">
+              <li>
+                <a #description>{{job.description}}</a>
+              </li>
+              <li>
+                  <a #payment style="color:dodgerblue">{{job.payment}}</a>
+                </li>
+              <li>
+                <a #noOfBids style="color:dodgerblue">{{job.noOfBids}}</a>
+              </li>
+              <li>
+                <a #Place>{{job.place}}</a>
+              </li>
+              <li>
+                <a #postTime>{{job.postTime}}</a>
+              </li>
+              <li>
+                  <button class="bid-button" mat-raised-button type="button" (click)="salon()">Bid now</button>
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+  </div>
+    
+</div>

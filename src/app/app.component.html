@@ -1,4 +1,189 @@
-<div class="container">
-  <router-outlet></router-outlet>
+<div id="header" class="header" [class.ham-clicked]="wasClicked">
+  <div class="container">
+    <div class="upper-row">
+      <h1 class="logo" routerLink="" *ngIf="mobileQuery.matches">
+        hairwork.com
+      </h1>
+      <div class="menu-toggle" [class.mobile-match]="mobileQuery.matches" (click)="postAJob()">
+        <div class="hamberger" [class.ham-clicked]="wasClicked"></div>
+      </div>
+      <div [class.mobile-match]="mobileQuery.matches" class="user-info" [class.ham-clicked]="wasClicked"
+        [class.user-clicked]="userClicked">
+        <button class=" right-button btn btn-primary" [class.user-clicked]="userClicked" (click)="postAJob()">Post a
+          Job</button>
+      </div>
+    </div>
+    <ul class="my-navi2" [class.ham-clicked]="wasClicked">
+      <li class="navi-item" *ngIf="!transition.matches">
+        <a class="item-logo" routerLink="">hairwork.com</a>
+      </li>
+    </ul>
+
+    <ul class="my-navi" [class.ham-clicked]="wasClicked">
+      <li class="navi-item" [class.ham-clicked]="wasClicked">
+        <a class="item-link" (click)="howItWorks">HOW IT WORKS</a>
+      </li>
+      <li class="navi-item" [class.ham-clicked]="wasClicked">
+        <a class="item-link" data-toggle="modal" data-target="#signUpModal">SIGN UP</a>
+      </li>
+      <li class="navi-item" [class.ham-clicked]="wasClicked">
+        <a class="item-link" data-toggle="modal" data-target="#loginModal">LOG IN</a>
+      </li>
+      <br />
+      <br />
+      <li class="navi-item" [class.user-clicked]="userClicked">
+        <button class="btn btn-primary" [class.user-clicked]="userClicked" (click)="postAJob()" [class.user-clicked]="userClicked">Post
+          a Job</button>
+      </li>
+    </ul>
+
+  </div>
+</div>
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="signUp-form">
+
+          <div class="form-wrap">
+
+            <mat-form-field class="modal-full-width">
+              <input matInput name="userName" placeholder="User Name" [formControl]="userNameFormControl"
+                [errorStateMatcher]="matcher">
+              <mat-error *ngIf="!userNameFormControl.hasError('required')">
+                Do not include characters in your user name
+              </mat-error>
+              <mat-error *ngIf="userNameFormControl.hasError('required')">
+                User name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="email" placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="password" placeholder="Password" [formControl]="passwordFormControl"
+                [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'">
+              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+              <mat-error *ngIf="!passwordFormControl.hasError('required')">
+                Please enter a valid password
+              </mat-error>
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="confPassword" placeholder="Confirm Password" [formControl]="confPasswordFormControl"
+                [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'">
+              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+              <mat-error *ngIf="!confPasswordFormControl.hasError('required')">
+                Please enter a valid password
+              </mat-error>
+              <mat-error *ngIf="confPasswordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <h4 class="modal-full-width" style="color:grey">Sign up as a,</h4>
+          <div class="modal-full-width form-wrap btnWrap">
+            <ul>
+              <li>
+                <button class="form-button" mat-raised-button type="button" (click)="stylist()">Stylist</button>
+              </li>
+              <li>
+                <button class="form-button" mat-raised-button type="button" (click)="salon()">Salon</button>
+              </li>
+            </ul>
+          </div>
+
+        </form>
+        <div class="modal-full-width footer">
+          <a>
+            <span>By signin up you are accepting Terms and Conditions of hairwork.com</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog login-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="login-form">
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="email" placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="password" placeholder="Password" [formControl]="passwordFormControl"
+                [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'">
+              <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+              <mat-error *ngIf="!passwordFormControl.hasError('required')">
+                Please enter a valid password
+              </mat-error>
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-wrap btnWrap">
+            <button class="form-button" mat-raised-button color="primary" type="button" (click)="login()">Login</button>
+          </div>
+
+        </form>
+        <div class="modal-full-width footer">
+          <div class="options">
+            <a href="" (click)="buttonClickRecoverLink()">Forgot your hairwork.com password?</a>
+            <br />
+            <a href="" data-toggle="modal" data-target="#signUpModal" data-dismiss="modal">Don't have an hairwork.com Account? Create one now.</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
+
+<div class="outlet-area" (click)="removeIt()">
+  <router-outlet></router-outlet>
+</div>
