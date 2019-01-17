@@ -4,12 +4,12 @@
       <h1 class="logo" routerLink="" *ngIf="mobileQuery.matches">
         hairwork.com
       </h1>
-      <div class="menu-toggle" [class.mobile-match]="mobileQuery.matches" (click)="postAJob()">
+      <div class="menu-toggle" [class.mobile-match]="mobileQuery.matches" (click)="toggleMenu()">
         <div class="hamberger" [class.ham-clicked]="wasClicked"></div>
       </div>
       <div [class.mobile-match]="mobileQuery.matches" class="user-info" [class.ham-clicked]="wasClicked"
         [class.user-clicked]="userClicked">
-        <button class=" right-button btn btn-primary" [class.user-clicked]="userClicked" (click)="postAJob()">Post a
+        <button class=" right-button btn btn-primary" [class.user-clicked]="userClicked" (click)="toggleUser()">Post a
           Job</button>
       </div>
     </div>
