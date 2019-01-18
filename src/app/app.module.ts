@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StylistComponent } from './components/stylist/stylist.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { SalonComponent } from './components/salon/salon.component';
 
 
 const appRoutes : Routes = [
@@ -23,6 +24,7 @@ const appRoutes : Routes = [
     {path:'',component:DashboardComponent},
     {path:'stylist',component:StylistComponent},
     {path:'customer',component:CustomerComponent},
+    {path:'salon',component:SalonComponent},
 ];
 
 
@@ -32,7 +34,8 @@ const appRoutes : Routes = [
     AppComponent,
     DashboardComponent,
     StylistComponent,
-    CustomerComponent
+    CustomerComponent,
+    SalonComponent
   ],
   imports: [
     BrowserModule,

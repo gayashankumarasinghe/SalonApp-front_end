@@ -13,12 +13,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  hire(){
-    this.router.navigate(['customer'])
+  stylist(){
+    this.router.navigate(['stylist'])
   }
 
-  work(){
-    this.router.navigate(['stylist'])
+  salon(){
+    this.router.navigate(['salon'])
   }
 
 
