@@ -10,8 +10,20 @@ export class AuthenticationService {
 
   constructor( private http: HttpClient ) { }
 
-  registerStylist(token:any){
+  registerStylist(token:any): Observable<any>{
     return this.http.post('register-stylist',token);
+  }
+
+  searchQuery(token:any): Observable<any>{
+    return this.http.post('search-query',token)
+  }
+
+  setUserDetails(token:any): Observable<any>{
+    return this.http.post('user-data',token);
+  }
+
+  getUserDetails(): Observable<any>{
+    return this.http.get('user-data');
   }
 
 }

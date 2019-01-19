@@ -21,35 +21,42 @@
             <ul style="list-style:none; position:relative; display:block; left:-20px;">
               <li>
                 <label for="firstSlider">Rate</label><br>
-                <mat-slider #firstSlider></mat-slider>
+                <mat-slider [thumb-label]="true"
+                            [max]="5"
+                            [min]="0"
+                            [step]="1"
+                            [(ngModel)]="rate"
+                            (input)="searchUsingRate()"
+                            (change)="searchUsingRate()"
+                  #firstSlider></mat-slider>
               </li>
               <li>
                   <mat-form-field>
-                    <label for="options">Skills</label><br>
-                    <mat-select >
-                    <mat-option value="option">Baber</mat-option>
-                    <mat-option value="option">Clipper Work</mat-option>
-                    <mat-option value="option">Dry Cutting</mat-option>
-                    <mat-option value="option">Makeup</mat-option>
+                    <label for="Skills">Skills</label><br>
+                    <mat-select #options [(value)]="skills" (change)="searchUsingSkills()" >
+                    <mat-option value="Barber">Baber</mat-option>
+                    <mat-option value="ClipperWork">Clipper Work</mat-option>
+                    <mat-option value="DryCutting">Dry Cutting</mat-option>
+                    <mat-option value="Makeup">Makeup</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </li>
                  <li>
                   <mat-form-field>
-                    <label for="options">location</label><br>
-                    <mat-select >
-                    <mat-option value="option">Califonia</mat-option>
-                    <mat-option value="option">Florida</mat-option>
-                    <mat-option value="option">Denver</mat-option>
+                    <label for="Location">Location</label><br>
+                    <mat-select #Location [(value)]="location" (change)="searchUsingLocation()">
+                    <mat-option value="Califonia">Califonia</mat-option>
+                    <mat-option value="Florida">Florida</mat-option>
+                    <mat-option value="Denver">Denver</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </li>
                   <li>
                     <mat-form-field>
                        <label for="calender">Date</label><br>
-                       <input matInput [matDatepicker]="picker">
+                       <input #calender matInput [matDatepicker]="picker" [(ngModel)]="date" (dateInput)="searchUsingDate()" (dateChange)="searchUsingDate()">
                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                       <mat-datepicker #picker></mat-datepicker>
+                       <mat-datepicker touchUi="true" #picker></mat-datepicker>
                     </mat-form-field>
                   </li>
             </ul>
