@@ -30,3 +30,106 @@
 	padding-left: 10px;
 	top:200px;
 }
+
+.bottom-line{
+	font-family: 'segoe-regular';
+	position: relative;
+	top: 380px;
+	letter-spacing: 2px;
+	font-size: 2em;
+}
+.materialcard{
+    position:relative;
+    padding:20px;
+    display: -webkit-box;
+    width:95%;
+    margin: 2%;
+}
+
+.material-card{
+	height:500px;
+}
+
+.stylist-content{
+	position: relative;
+	top:20px;
+	display: flex;
+}
+.adjustments{
+	min-width: 300px;
+	padding: 0 10px 0 10px;
+}
+
+.jobs{
+	position: relative;
+	list-style: none;
+	width: 100%;
+	padding-right: 50px; 
+}
+.results{
+	width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.mat-slider-horizontal{
+	min-width: 200px !important;
+	width: 95%;
+}
+.mat-card-content{
+	position: relative;
+	width:70%;
+}
+.mat-card-header{
+	display: block !important;
+}
+.search-img{
+	position: relative;
+    padding: 10px 20px 10px 20px;
+    width: 180px;
+    height: 190px;
+}
+.bid-button{
+	margin: 10px 0px 10px 0px;
+	background: rgb(0, 119, 255);
+	color: white;
+  	border-radius: 5px;
+  	padding:5px;
+  	min-width:200px;
+}
+
+@media only screen and (max-width: 800px) {
+	.bottom-line{
+		position: absolute;
+		top: 500px;
+		font-size: 1.5em;
+	}
+	.stylist-content{
+		display: block;
+	}
+	.material-card{
+		height:300px;
+	}
+	.adjustments{
+		position: absolute;
+		margin: 0 auto;
+		width: 100%;
+	}
+	.results{
+		top:300px;
+		position: absolute;
+		margin: 0 auto;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.bottom-line{
+		font-size: 1em;
+	}
+	.materialcard{
+        display: block;
+	}
+	
+}
+
