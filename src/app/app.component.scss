@@ -123,6 +123,7 @@ body {
 
 .my-navi li {
   display: contents;
+  white-space: nowrap;
   position: relative;
   height: $listHeight;
   z-index: 6;
