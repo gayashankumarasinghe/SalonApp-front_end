@@ -17,6 +17,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StylistComponent } from './components/stylist/stylist.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { SalonComponent } from './components/salon/salon.component';
+import { StylistloginComponent } from './components/stylistlogin/stylistlogin.component';
+import { SalonloginComponent } from './components/salonlogin/salonlogin.component';
 
 
 const appRoutes : Routes = [
@@ -35,7 +37,9 @@ const appRoutes : Routes = [
     DashboardComponent,
     StylistComponent,
     CustomerComponent,
-    SalonComponent
+    SalonComponent,
+    StylistloginComponent,
+    SalonloginComponent
   ],
   imports: [
     BrowserModule,
