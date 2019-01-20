@@ -27,6 +27,8 @@ const appRoutes : Routes = [
     {path:'stylist',component:StylistComponent},
     {path:'customer',component:CustomerComponent},
     {path:'salon',component:SalonComponent},
+    {path:'salonlogin',component:SalonloginComponent},
+    {path:'stylistlogin',component:StylistloginComponent},
 ];
 
 
