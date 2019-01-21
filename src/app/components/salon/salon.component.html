@@ -43,11 +43,11 @@
                 </li>
                  <li>
                   <mat-form-field>
-                    <label for="options">location</label><br>
-                    <mat-select >
-                    <mat-option value="option">Califonia</mat-option>
-                    <mat-option value="option">Florida</mat-option>
-                    <mat-option value="option">Denver</mat-option>
+                    <label for="location">location</label><br>
+                    <mat-select #options [(value)]="location" (change)="searchUsingLocation()">
+                    <mat-option value="Califonia">Califonia</mat-option>
+                    <mat-option value="Florida">Florida</mat-option>
+                    <mat-option value="Denver">Denver</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </li>
