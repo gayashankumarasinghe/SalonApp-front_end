@@ -1,27 +1,21 @@
 .card{
     position: relative;
-    max-width: 500px;
-    width:95%;
-// color: #171717;
-    padding-left: 30px; 
-// color: white;
-    top:200px;
-    left: 28%;
-    
+    bottom:20px;
+    margin:2%;
+    width: 96%; 
+    padding-left: 30px;
 }
-
 .layer{
 	background-color: #171717;
 	opacity: 0.7;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-	height: 100%;
+	height: 72px;
 }
 .material-content{
     position:relative;
-    //background-color: #171717;
 }
 .info-group{
     position: relative;
@@ -34,24 +28,93 @@
     }
 }
 
-.example-card {
-    max-width: 20%;
-    max-height: 20%;
-    top: 0%;
-    left: 5%;
-  }
-  
-  .example-header-image {
-    //background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-    left: 50%;
-    top: 20%;
-  }
+.user-image{
+    position: relative;
+    margin: 0 auto;
+    width:10em;
+    height:10em;
+    border-radius: 50%;
+}
 
-  .booking-table{
+.booking-table{
     background-size: cover;
     max-width: 20%;
     max-height: 20%;
     top: 50px;
     left: 5%;
-  }
+}
+
+.material-card{
+    height:500px;
+    min-width:400px;
+}
+
+.stylist-content{
+	position: relative;
+	top:50px;
+	display: flex;
+}
+.adjustments{
+	min-width: 400px;
+	padding: 0 10px 0 10px;
+}
+
+.results{
+	width: 100%;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 10px 0 10px;
+}
+
+.mat-card-content{
+    position: relative;
+}
+.mat-card-header{
+    display: block !important;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 800px) {
+	.bottom-line{
+		position: absolute;
+		top: 500px;
+		font-size: 1.5em;
+	}
+	.stylist-content{
+        top:10px;
+		display: block;
+	}
+	.material-card{
+		height:300px;
+	}
+	.adjustments{
+        position: absolute;
+        display: -webkit-box;
+		margin: 0 auto;
+		width: 100%;
+	}
+	.results{
+		top:330px;
+		position: absolute;
+		margin: 0 auto;
+		width: 100%;
+    }
+    
+    .card{
+        top:20px;
+        padding:20px;
+    }
+    .profile{
+        position: relative;
+        margin: 0 auto;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+	.bottom-line{
+		font-size: 1em;
+	}
+}
+

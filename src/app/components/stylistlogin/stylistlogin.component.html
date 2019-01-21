@@ -1,76 +1,75 @@
 <div class="layer">
-</div>  
+</div>
 
-<mat-card class="card">
-  <mat-card-content class="material-content">
-    <div class="Personal-info">
-      <div class="info-group">
-        <label class="col-sm-3 control-label">Full name : </label>
-        <p class="form-control-static">{{ details?.firstName +' '+ details?.lastName}}</p>
-      </div>
-      <div class="info-group">
-        <label class="col-sm-3 control-label">User Name : </label>
-        <p class="form-control-static">{{ details?.userName }}</p>
-      </div>
-      <div class="info-group">
-        <label class="col-sm-3 control-label">Email : </label>
-        <p class="form-control-static">{{ details?.email }}</p>
-      </div>
-      <div class="info-group">
-        <label class="col-sm-3 control-label">Role : </label>
-        <p class="form-control-static">{{ details?.role }}</p>
-      </div>
-      <div class="info-group">
-        <label class="col-sm-3 control-label">Availability : </label>
-        <mat-slide-toggle
-        [(ngModel)]="checked"
-        [color]="primary"
-        (change)="changed()">
-        Slide to ajust availability status
-      </mat-slide-toggle>
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+<div class="stylist-content">
+  <div class="adjustments">
+      <mat-card class="card">
+        <mat-card-header>
+          <div>
+            <img src="assets/user-img.jpg" class="user-image">
+          </div>
+        </mat-card-header>
+        <mat-card-content style="text-align: center; margin: 0 auto;">
+          <br><a style="color:black;">{{details.firstName}}</a>
+          <br><a style="color:gray;">{{details.email}}</a>
+        </mat-card-content>
+        <mat-card-actions style="text-align: center; margin: 0 auto;">
+          <button mat-stroked-button>
+            <i class="fa fa-pencil" style="padding-right:5px;"></i>Edit</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+  <div class="results">
+    <mat-spinner *ngIf="showSpinner" [mode]="Indeterminate">
+    </mat-spinner>
+    <mat-card class="card">
+      <mat-card-content class="material-content">
+        <div class="Personal-info">
+          <div class="info-group">
+            <label class="col-sm-3 control-label">Full name : </label>
+            <p class="form-control-static">{{ details?.firstName +' '+ details?.lastName}}</p>
+          </div>
+          <div class="info-group">
+            <label class="col-sm-3 control-label">User Name : </label>
+            <p class="form-control-static">{{ details?.userName }}</p>
+          </div>
+          <div class="info-group">
+            <label class="col-sm-3 control-label">Email : </label>
+            <p class="form-control-static">{{ details?.email }}</p>
+          </div>
+          <div class="info-group">
+            <label class="col-sm-3 control-label">Role : </label>
+            <p class="form-control-static">{{ details?.role }}</p>
+          </div>
+          <div class="info-group">
+            <label class="col-sm-3 control-label">Availability : </label>
+            <mat-slide-toggle [(ngModel)]="checked" [color]="primary" (change)="changed()">
+              Slide to ajust availability status
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-<mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <!--<mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
-    </mat-card-header>
-    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-    <!--<mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>-->
-    <mat-card-actions>
-      <button mat-button>Change</button>
-      <!-- <button mat-button>SHARE</button> -->
-    </mat-card-actions>
-  </mat-card>
+    <mat-card class="card">
+      <table class="booking-table" matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="salon">Salon</th>
+          <th mat-sort-header="date">Date</th>
+          <th mat-sort-header="city">City</th>
+          <th mat-sort-header="street">Street</th>
+          <th mat-sort-header="telephone">Telephone</th>
+        </tr>
 
+        <tr *ngFor="let booking of bookings">
+          <td>{{booking.salon}}</td>
+          <td>{{booking.date}}</td>
+          <td>{{booking.city}}</td>
+          <td>{{booking.street}}</td>
+          <td>{{booking.telephone}}</td>
+        </tr>
+      </table>
+    </mat-card>
+  </div>
 
-<!--<div class="booking-table">-->
-
-  <table class = "booking-table" matSort (matSortChange)="sortData($event)">
-  <tr>
-    <th mat-sort-header="salon">Salon</th>
-    <th mat-sort-header="date">Date</th>
-    <th mat-sort-header="city">City</th>
-    <th mat-sort-header="street">Street</th>
-    <th mat-sort-header="telephone">Telephone</th>
-  </tr>
-
-  <tr *ngFor="let booking of bookings">
-    <td>{{booking.salon}}</td>
-    <td>{{booking.date}}</td>
-    <td>{{booking.city}}</td>
-    <td>{{booking.street}}</td>
-    <td>{{booking.telephone}}</td>
-  </tr>
-</table>
-<!--</div>  -->
+</div>

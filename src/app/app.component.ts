@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     window.onscroll = function() { 
       let y = window.pageYOffset;
-      if(y>50){
+      if(y>5){
         document.getElementById("header").classList.add("darker");
       }
       else{

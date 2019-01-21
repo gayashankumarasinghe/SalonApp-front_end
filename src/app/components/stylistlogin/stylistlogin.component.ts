@@ -23,6 +23,13 @@ export class StylistloginComponent implements OnInit {
 
   ngOnInit() {
     this.details = this.auth.getUserDetails();
+    this.details={
+      firstName:'Gayashan',
+      lastName:'Kumarasinghe',
+      userName:'Gayashan',
+      email:'gayashankaushallya@gmail.com',
+      role: 'stylist'
+    }
     this.auth.setUserDetails(this.details).subscribe(data =>{
       console.log(data)
       if(data == 'available'){
