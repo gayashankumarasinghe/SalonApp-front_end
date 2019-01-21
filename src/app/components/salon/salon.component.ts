@@ -25,6 +25,7 @@ export class SalonComponent implements OnInit {
  rateChecker = 6;
  jobs=[];
   jobList = [{
+    id:'001',
     name: 'HairCool Customs',
     distance:'5 km away',
     description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
@@ -36,6 +37,7 @@ export class SalonComponent implements OnInit {
     skills: 'Barber',
     date: 'Sat Jan 19 2019'
   },{
+    id:'002',
     name: 'HairCool Customs',
     distance:'250 km away',
     description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
@@ -47,6 +49,7 @@ export class SalonComponent implements OnInit {
     skills: 'Barber',
     date: 'Sun Jan 20 2019'
   },{
+    id:'003',
     name: 'HairCool Customs',
     distance:'250 km away',
     description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
@@ -58,6 +61,7 @@ export class SalonComponent implements OnInit {
     skills: 'Makeup',
     date: 'Sat Jan 19 2019'
   },{
+    id:'004',
     name: 'HairCool Customs',
     distance:'5 km away',
     description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
@@ -88,7 +92,12 @@ export class SalonComponent implements OnInit {
     console.log(this.searchToken);
   }
 
+  salon(x){
+    console.log(x);
+  }
+
   searchUsingRate(){
+    this.jobs=[];
     this.searchToken.rate= this.rate;
     console.log(this.searchToken);
     this.auth.searchQuery(this.searchToken).subscribe(result=>{
@@ -96,9 +105,9 @@ export class SalonComponent implements OnInit {
         this.jobs.push(element);
       });
     })
-    // this.jobs=[];
+    
     // this.jobList.forEach(result=>{
-    //   if(result.rate >= this.value){
+    //   if(result.rate >= this.rate){
     //     return this.jobs.push(result);
     //   }
     // }) 
@@ -130,7 +139,7 @@ export class SalonComponent implements OnInit {
     })
 
     // this.jobList.forEach(result=>{
-    //   if(result.rate >= this.value){
+    //   if(result.rate >= this.rate){
     //     return this.jobs.push(result);
     //   }
     // }) 
