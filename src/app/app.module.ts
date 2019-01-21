@@ -10,7 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 
+//services imports
 import { AuthenticationService } from './Services/authentication.service';
+import { SalonService } from './services/salon.service';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -53,7 +55,7 @@ const appRoutes : Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ AuthenticationService ],
+  providers: [ AuthenticationService,SalonService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
