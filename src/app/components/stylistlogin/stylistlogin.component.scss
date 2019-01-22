@@ -118,3 +118,12 @@
 	}
 }
 
+.example-container {
+  display: flex;
+  flex-direction: column;
+  left: 30px;
+}
+
+.example-container > * {
+  width: 20%;
+}
