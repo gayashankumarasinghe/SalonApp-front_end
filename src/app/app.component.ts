@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   openLogin=false;
 
   user = {
-    userName: '',
+    name: '',
     email: '',
     password: '',
     confirm: ''
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
 
   //login & signup functions
   stylist(){
-    this.user.userName= this.userNameFormControl.value;
+    this.user.name= this.userNameFormControl.value;
     this.user.email= this.emailFormControl.value;
     this.user.password= this.passwordFormControl.value;
     this.user.confirm = this.confPasswordFormControl.value;
