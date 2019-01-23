@@ -62,7 +62,7 @@ export class StylistComponent implements OnInit {
 
   ngOnInit() {
     this.showSpinner=false;
-    this.auth.getUserDetails().subscribe(result=>{
+    this.auth.getSalonDetails().subscribe(result=>{
       result.forEach(element=>{
         this.jobs.push(element)
       })

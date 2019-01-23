@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../Services/authentication.service';
+import { StylistService } from '../../Services/stylist.service';
 import {Sort} from '@angular/material';
 
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +44,7 @@ export class StylistloginComponent implements OnInit {
   constructor( private auth: AuthenticationService ) { }
 
   ngOnInit() {
-    this.auth.getUserDetails().subscribe( result=>{
+    this.auth.getSalonDetails().subscribe( result=>{
       console.log(result);
       result.forEach(element => {
         this.details = element
@@ -56,6 +57,10 @@ export class StylistloginComponent implements OnInit {
       }
       return this.checked=false;
     });
+  }
+
+ stylist(){
+    //this.http.navigate(['stylist'])
   }
 
 }
