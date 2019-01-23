@@ -22,14 +22,12 @@ export class StylistloginComponent implements OnInit {
   constructor( private auth: AuthenticationService ) { }
 
   ngOnInit() {
-    this.details = this.auth.getUserDetails();
-    this.details={
-      firstName:'Gayashan',
-      lastName:'Kumarasinghe',
-      userName:'Gayashan',
-      email:'gayashankaushallya@gmail.com',
-      role: 'stylist'
-    }
+    this.auth.getUserDetails().subscribe( result=>{
+      console.log(result);
+      result.forEach(element => {
+        this.details = element
+      });
+    })
     this.auth.setUserDetails(this.details).subscribe(data =>{
       console.log(data)
       if(data == 'available'){

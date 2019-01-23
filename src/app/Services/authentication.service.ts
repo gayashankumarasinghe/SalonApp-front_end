@@ -11,19 +11,19 @@ export class AuthenticationService {
   constructor( private http: HttpClient ) { }
 
   registerStylist(token:any): Observable<any>{
-    return this.http.post('register-stylist',token);
+    return this.http.post('/salon/register-stylist',token);
   }
 
   searchQuery(token:any): Observable<any>{
-    return this.http.post('search-query',token)
+    return this.http.post('/salon/search-query',token)
   }
 
   setUserDetails(token:any): Observable<any>{
-    return this.http.post('user-data',token);
+    return this.http.post('/salon/user-data',token);
   }
 
   getUserDetails(): Observable<any>{
-    return this.http.get('user-data');
+    return this.http.get('/salon/all');
   }
 
 }

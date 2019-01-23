@@ -10,8 +10,8 @@
           </div>
         </mat-card-header>
         <mat-card-content style="text-align: center; margin: 0 auto;">
-          <br><a style="color:black;">{{details.firstName}}</a>
-          <br><a style="color:gray;">{{details.email}}</a>
+          <br><a style="color:black;">{{details?.name}}</a>
+          <br><a style="color:gray;">{{details?.email}}</a>
         </mat-card-content>
         <mat-card-actions style="text-align: center; margin: 0 auto;">
           <button mat-stroked-button>
@@ -27,11 +27,11 @@
         <div class="Personal-info">
           <div class="info-group">
             <label class="col-sm-3 control-label">Full name : </label>
-            <p class="form-control-static">{{ details?.firstName +' '+ details?.lastName}}</p>
+            <p class="form-control-static">{{ details?.name}}</p>
           </div>
           <div class="info-group">
             <label class="col-sm-3 control-label">User Name : </label>
-            <p class="form-control-static">{{ details?.userName }}</p>
+            <p class="form-control-static">{{ details?.country }}</p>
           </div>
           <div class="info-group">
             <label class="col-sm-3 control-label">Email : </label>
@@ -39,7 +39,7 @@
           </div>
           <div class="info-group">
             <label class="col-sm-3 control-label">Role : </label>
-            <p class="form-control-static">{{ details?.role }}</p>
+            <p class="form-control-static">{{ details?.description }}</p>
           </div>
           <div class="info-group">
             <label class="col-sm-3 control-label">Availability : </label>

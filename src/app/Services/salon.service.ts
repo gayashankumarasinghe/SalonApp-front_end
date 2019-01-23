@@ -14,12 +14,12 @@ export class SalonService {
 
   public getAllSalons() {
     //return this.http.get<User[]>(this.userUrl);
-    return this.http.get('/all');
+    return this.http.get('salon/all');
   }
 
    public updateSalon(salonId) {
     //return this.http.get<User[]>(this.userUrl);
-    return this.http.get('/all');
+    return this.http.get('salon/all');
   }
 
 
