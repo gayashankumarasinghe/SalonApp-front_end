@@ -1,6 +1,8 @@
 import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
+import { AuthenticationService } from '../../Services/authentication.service';
+
 
 @Component({
   selector: 'app-stylist',
@@ -9,46 +11,48 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class StylistComponent implements OnInit {
   showSpinner=true;
-  jobs = [{
-    name: 'HairCool Customs',
-    distance:'5 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'250 USD',
-    //noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-  },{
-    name: 'HairCool Customs',
-    distance:'5 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'250 USD',
-    //noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-  },{
-    name: 'HairCool Customs',
-    distance:'5 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'250 USD',
-    //noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-  },{
-    name: 'HairCool Customs',
-    distance:'5 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'250 USD',
-   // noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-  },];
+  // jobs = [{
+  //   name: 'HairCool Customs',
+  //   distance:'5 km away',
+  //   description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
+  //   payment:'250 USD',
+  //   //noOfBids:'12 bids per now',
+  //   place:'Colombo,Sri lanka',
+  //   postTime:'posted 10 mins bfr',
+  // },{
+  //   name: 'HairCool Customs',
+  //   distance:'5 km away',
+  //   description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
+  //   payment:'250 USD',
+  //   //noOfBids:'12 bids per now',
+  //   place:'Colombo,Sri lanka',
+  //   postTime:'posted 10 mins bfr',
+  // },{
+  //   name: 'HairCool Customs',
+  //   distance:'5 km away',
+  //   description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
+  //   payment:'250 USD',
+  //   //noOfBids:'12 bids per now',
+  //   place:'Colombo,Sri lanka',
+  //   postTime:'posted 10 mins bfr',
+  // },{
+  //   name: 'HairCool Customs',
+  //   distance:'5 km away',
+  //   description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
+  //   payment:'250 USD',
+  //  // noOfBids:'12 bids per now',
+  //   place:'Colombo,Sri lanka',
+  //   postTime:'posted 10 mins bfr',
+  // },];
+
+  jobs=[];
 
   mobileQuery: MediaQueryList;
   largeQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
 
-  constructor( changeDetectorRef: ChangeDetectorRef, media: MediaMatcher ) { 
+  constructor( changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private auth: AuthenticationService ) { 
     this.mobileQuery = media.matchMedia('(max-width: 767px)');
     this.largeQuery = media.matchMedia('(min-width: 768px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -58,6 +62,11 @@ export class StylistComponent implements OnInit {
 
   ngOnInit() {
     this.showSpinner=false;
+    this.auth.getUserDetails().subscribe(result=>{
+      result.forEach(element=>{
+        this.jobs.push(element)
+      })
+    })
   }
 
  

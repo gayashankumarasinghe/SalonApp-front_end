@@ -12,7 +12,7 @@ export class SalonService {
 
   constructor( private http: HttpClient) { }
 
-  public getAllSalons() {
+  public getAllSalons():Observable<any> {
     //return this.http.get<User[]>(this.userUrl);
     return this.http.get('salon/all');
   }

@@ -18,7 +18,7 @@
       <mat-card-header>
         
         <mat-card-title>{{job.name}}</mat-card-title>
-        <mat-card-subtitle style="color:dodgerblue">{{job.distance}}</mat-card-subtitle>
+        <mat-card-subtitle style="color:dodgerblue">{{job.email}}</mat-card-subtitle>
         <div> 
             <img  class="search-img" src="assets/pic.jpg">
           </div>
@@ -29,16 +29,16 @@
             <a #description>{{job.description}}</a>
           </li>
           <li>
-              <a #payment style="color:dodgerblue">{{job.payment}}</a>
+              <a #payment style="color:dodgerblue">{{job.facebook}}</a>
             </li>
           <li>
-            <a #noOfBids style="color:dodgerblue">{{job.noOfBids}}</a>
+            <a #noOfBids style="color:dodgerblue">{{job.website}}</a>
           </li>
           <li>
-            <a #Place>{{job.place}}</a>
+            <a #Place>{{job.street_address}}</a>
           </li>
           <li>
-            <a #postTime>{{job.postTime}}</a>
+            <a #postTime>{{job.country}}</a>
           </li>
           <!-- <li>
               <button class="bid-button" mat-raised-button type="button" (click)="salon()">Book now</button>
