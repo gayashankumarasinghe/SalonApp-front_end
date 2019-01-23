@@ -110,7 +110,7 @@
                 </li>
 </div>
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog .modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editModalLabel"><i class="fa fa-pencil" style="padding-right:5px;"></i>Edit</h5>
@@ -148,8 +148,8 @@
 
           <div class="form-wrap">
             <mat-form-field class="modal-full-width">
-              <input matInput name="Description" placeholder="Description" [formControl]="descriptionFormControl"
-                [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'">
+              <textarea rows="4" matInput name="Description" placeholder="Description" [formControl]="descriptionFormControl"
+                [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'"></textarea>
               <mat-error *ngIf="!descriptionFormControl.hasError('required')">
                 Please enter a valid Description
               </mat-error>
