@@ -13,6 +13,7 @@ import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 //services imports
 import { AuthenticationService } from './Services/authentication.service';
 import { SalonService } from './services/salon.service';
+import { StylistService } from './services/stylist.service';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -55,7 +56,7 @@ const appRoutes : Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ AuthenticationService,SalonService ],
+  providers: [ AuthenticationService,SalonService,StylistService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

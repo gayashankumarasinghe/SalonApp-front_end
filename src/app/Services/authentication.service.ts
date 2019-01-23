@@ -22,7 +22,7 @@ export class AuthenticationService {
     return this.http.post('/salon/user-data',token);
   }
 
-  getUserDetails(): Observable<any>{
+  getSalonDetails(): Observable<any>{
     return this.http.get('/salon/all');
   }
 
