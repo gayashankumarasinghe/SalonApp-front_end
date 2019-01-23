@@ -14,7 +14,7 @@
           <br><a style="color:gray;">{{details?.email}}</a>
         </mat-card-content>
         <mat-card-actions style="text-align: center; margin: 0 auto;">
-          <button mat-stroked-button>
+          <button mat-stroked-button data-toggle="modal" data-target="#editModal">
             <i class="fa fa-pencil" style="padding-right:5px;"></i>Edit</button>
         </mat-card-actions>
       </mat-card>
@@ -108,20 +108,74 @@
                     </mat-select>
                   </mat-form-field>
                 </li>
-             <br>             
-                 <mat-form-field>
-                  <input matInput placeholder="Facebook">
-                 </mat-form-field>
-             <br>
-                 <mat-form-field>
-                  <input matInput placeholder="Website">
-                 </mat-form-field>
-             <br>
-                 <mat-form-field>
-                   <textarea matInput placeholder="Description"></textarea>
-                </mat-form-field>
-              <br>
-                 <li>
-                     <button class="form-button" mat-raised-button type="button" (click)="stylist()">Submit</button>
-                 </li>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel"><i class="fa fa-pencil" style="padding-right:5px;"></i>Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="edit-form">
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="facebook" placeholder="Facebook" [formControl]="facebookFormControl"
+                [errorStateMatcher]="matcher">
+              <mat-error *ngIf="!facebookFormControl.hasError('required')">
+                Do not include characters in your facebook
+              </mat-error>
+              <mat-error *ngIf="facebookFormControl.hasError('required')">
+                facebook is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="website" placeholder="Website" [formControl]="websiteFormControl" [errorStateMatcher]="matcher">
+              <mat-error *ngIf="!websiteFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="websiteFormControl.hasError('required')">
+                website is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="Description" placeholder="Description" [formControl]="descriptionFormControl"
+                [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'">
+              <mat-error *ngIf="!descriptionFormControl.hasError('required')">
+                Please enter a valid Description
+              </mat-error>
+              <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                  Description is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="modal-full-width form-wrap btnWrap">
+            <ul>
+              <li>
+                <button class="form-button" mat-raised-button type="button" (click)="stylist()">Submit</button>
+              </li>
+            </ul>
+          </div>
+
+        </form>
+        <div class="modal-full-width footer">
+          <a>
+            <span>By updating information you are accepting Terms and Conditions of hairwork.com</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 </div>

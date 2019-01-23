@@ -1,121 +1,131 @@
-.card{
-    position: relative;
-    bottom:20px;
-    margin:2%;
-    width: 96%; 
-    padding-left: 30px;
+.card {
+  position: relative;
+  bottom: 20px;
+  margin: 2%;
+  width: 96%;
+  padding-left: 30px;
 }
-.layer{
-	background-color: #171717;
-	opacity: 0.7;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-	height: 72px;
+
+.layer {
+  background-color: #171717;
+  opacity: 0.7;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
 }
-.material-content{
-    position:relative;
+
+.material-content {
+  position: relative;
 }
-.info-group{
-    position: relative;
-    display: flex;   
+
+.info-group {
+  position: relative;
+  display: flex;
 }
 
 @media screen and (max-width: 590px) {
-    .info-group{
-        display: block;   
-    }
+  .info-group {
+    display: block;
+  }
 }
 
-.user-image{
-    position: relative;
-    margin: 0 auto;
-    width:10em;
-    height:10em;
-    border-radius: 50%;
+.user-image {
+  position: relative;
+  margin: 0 auto;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
 }
 
-.booking-table{
-    background-size: cover;
-    max-width: 20%;
-    max-height: 20%;
-    top: 50px;
-    left: 5%;
+.booking-table {
+  background-size: cover;
+  max-width: 20%;
+  max-height: 20%;
+  top: 50px;
+  left: 5%;
 }
 
-.material-card{
-    height:500px;
-    min-width:400px;
+.material-card {
+  height: 500px;
+  min-width: 400px;
 }
 
-.stylist-content{
-	position: relative;
-	top:50px;
-	display: flex;
-}
-.adjustments{
-	min-width: 400px;
-	padding: 0 10px 0 10px;
+.stylist-content {
+  position: relative;
+  top: 50px;
+  display: flex;
 }
 
-.results{
-	width: 100%;
-    position: relative;
-    margin: 0 auto;
-    padding: 0 10px 0 10px;
+.adjustments {
+  min-width: 400px;
+  padding: 0 10px 0 10px;
 }
 
-.mat-card-content{
-    position: relative;
+.results {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 10px 0 10px;
 }
-.mat-card-header{
-    display: block !important;
-    text-align: center;
+
+.mat-card-content {
+  position: relative;
+}
+
+.mat-card-header {
+  display: block !important;
+  text-align: center;
 }
 
 
 @media only screen and (max-width: 800px) {
-	.bottom-line{
-		position: absolute;
-		top: 500px;
-		font-size: 1.5em;
-	}
-	.stylist-content{
-        top:10px;
-		display: block;
-	}
-	.material-card{
-		height:300px;
-	}
-	.adjustments{
-        position: absolute;
-        display: -webkit-box;
-		margin: 0 auto;
-		width: 100%;
-	}
-	.results{
-		top:330px;
-		position: absolute;
-		margin: 0 auto;
-		width: 100%;
-    }
-    
-    .card{
-        top:20px;
-        padding:20px;
-    }
-    .profile{
-        position: relative;
-        margin: 0 auto;
-        justify-content: center;
-    }
+  .bottom-line {
+    position: absolute;
+    top: 500px;
+    font-size: 1.5em;
+  }
+
+  .stylist-content {
+    top: 10px;
+    display: block;
+  }
+
+  .material-card {
+    height: 300px;
+  }
+
+  .adjustments {
+    position: absolute;
+    display: -webkit-box;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .results {
+    top: 330px;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .card {
+    top: 20px;
+    padding: 20px;
+  }
+
+  .profile {
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-	.bottom-line{
-		font-size: 1em;
-	}
+  .bottom-line {
+    font-size: 1em;
+  }
 }
 
 .example-container {
@@ -124,6 +134,58 @@
   left: 30px;
 }
 
-.example-container > * {
+.example-container>* {
   width: 20%;
+}
+
+.edit-form {
+  margin: 0 auto;
+  max-width: 500px;
+  font-size: 0.8em;
+  width: 100%;
+}
+
+.form-button {
+  background: rgb(0, 119, 255);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  min-width: 200px;
+}
+
+@media only screen and (max-width: 430px) {
+  .edit-form {
+    position: relative;
+  }
+
+  .modal-full-width {
+    width: 70%;
+    padding: 5px 20px 5px 20px;
+  }
+}
+
+@media only screen and (min-width: 430px) {
+  .edit-form {
+    min-width: 340px;
+  }
+
+  .modal-full-width {
+    width: 100%;
+    padding: 5px 20px 5px 20px;
+  }
+}
+
+.btnWrap {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btnWrap ul {
+  display: block;
+  list-style: none;
+}
+
+.btnWrap ul li {
+  padding: 10px;
 }
