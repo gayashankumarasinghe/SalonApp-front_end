@@ -78,20 +78,37 @@
           </mat-card-header>
           <mat-card-content>
             <ul class="jobs">
+               <li>
+                 <label for = "name">Name :</label>
+                <a #name>{{job.name}}</a>
+              </li>
+               <li>
+                 <label for = "skills">skills :</label>
+                <a #name>{{job.skills}}</a>
+              </li>
               <li>
+                <label for = "description">description :</label>
                 <a #description>{{job.description}}</a>
               </li>
               <li>
-                  <a #payment style="color:dodgerblue">{{job.payment}}</a>
+                  <label for = "rate">rate :</label>
+                  <a #rate style="color:dodgerblue">{{job.rate}}</a>
+                </li>
+                 <li>
+                  <label for = "email">email :</label>
+                  <a #email style="color:dodgerblue">{{job.email}}</a>
                 </li>
               <li>
-                <a #noOfBids style="color:dodgerblue">{{job.noOfBids}}</a>
+                <label for = "facebook">facebook :</label>
+                <a #facebook style="color:dodgerblue">{{job.facebook}}</a>
               </li>
               <li>
-                <a #Place>{{job.place}}</a>
+                 <label for = "city">city :</label>
+                <a #Place>{{job.city}}</a>
               </li>
               <li>
-                <a #postTime>{{job.postTime}}</a>
+                <label for = "streetaddress">street address :</label>
+                <a #streetaddress>{{job.street_address}}</a>
               </li>
               <li>
                   <button class="bid-button" mat-raised-button type="button" (click)="salon(job.id)">Book now</button>

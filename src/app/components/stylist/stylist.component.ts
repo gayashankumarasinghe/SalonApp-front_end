@@ -2,6 +2,8 @@ import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 import { AuthenticationService } from '../../Services/authentication.service';
+//import { SalonService } from '../../Services/salon.service';
+
 
 
 @Component({

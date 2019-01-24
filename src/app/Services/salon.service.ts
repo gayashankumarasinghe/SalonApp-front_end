@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/catch';
@@ -12,15 +12,15 @@ export class SalonService {
 
   constructor( private http: HttpClient) { }
 
-  public getAllSalons():Observable<any> {
-    //return this.http.get<User[]>(this.userUrl);
-    return this.http.get('salon/all');
-  }
+  // public getAllSalons():Observable<any> {
+  //   //return this.http.get<User[]>(this.userUrl);
+  //   //return this.http.get('salon/all');
+  // }
 
-   public updateSalon(salonId) {
-    //return this.http.get<User[]>(this.userUrl);
-    return this.http.get('salon/all');
-  }
+  //  public updateSalon(salonId) {
+  //   //return this.http.get<User[]>(this.userUrl);
+  //   //return this.http.get('salon/all');
+  // }
 
 
 
