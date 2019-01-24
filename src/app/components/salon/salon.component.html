@@ -26,7 +26,6 @@
                             [min]="0"
                             [step]="1"
                             [(ngModel)]="rate"
-                            (input)="searchUsingRate()"
                             (change)="searchUsingRate()"
                   #firstSlider></mat-slider>
               </li>
@@ -44,7 +43,7 @@
                  <li>
                   <mat-form-field>
                     <label for="location">location</label><br>
-                    <mat-select #options [(value)]="location" (change)="searchUsingLocation()">
+                    <mat-select #options [(value)]="city" (change)="searchUsingLocation()">
                     <mat-option value="Califonia">Califonia</mat-option>
                     <mat-option value="Florida">Florida</mat-option>
                     <mat-option value="Denver">Denver</mat-option>
@@ -54,7 +53,7 @@
                   <li>
                     <mat-form-field>
                       <label for="calender">Date</label><br>
-                      <input #calender matInput [matDatepicker]="picker" [(ngModel)]="date" (dateInput)="searchUsingDate()" (dateChange)="searchUsingDate()">
+                      <input #calender matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="searchUsingDate()">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker touchUi="true" #picker></mat-datepicker>
                     </mat-form-field>

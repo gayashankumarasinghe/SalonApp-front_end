@@ -13,14 +13,13 @@ import { AuthenticationService } from '../../Services/authentication.service';
 export class SalonComponent implements OnInit {
  showSpinner=true;
  searchToken={
-   rate:0,
-   skills:'',
-   location:'',
-   date:''
+   rate:null,
+   skills:null,
+   city:null
  };
  rate;
  skills;
- location;
+ city;
  date;
  rateChecker = 6;
  jobs=[];
@@ -89,7 +88,6 @@ export class SalonComponent implements OnInit {
 
   ngOnInit() {
     this.showSpinner=false;
-    console.log(this.searchToken);
   }
 
   salon(x){
@@ -99,12 +97,22 @@ export class SalonComponent implements OnInit {
   searchUsingRate(){
     this.jobs=[];
     this.searchToken.rate= this.rate;
-    console.log(this.searchToken);
-    this.auth.searchQuery(this.searchToken).subscribe(result=>{
-      result.forEach(element => {
-        this.jobs.push(element);
+    try {
+      this.auth.searchQuery(this.searchToken).subscribe(result=>{
+        try {
+          result.forEach(element => {
+            this.jobs.push(element);
+          })
+        } catch (error) {
+          console.log("Error encountered\n"+error);
+        }
+      },error=>{
+          console.log("No search results found\n"+error);
       });
-    })
+    } catch (error) {
+      console.log("Error encountered\n"+error);
+    }
+    
     
     // this.jobList.forEach(result=>{
     //   if(result.rate >= this.rate){
@@ -115,12 +123,22 @@ export class SalonComponent implements OnInit {
   searchUsingSkills(){
     this.jobs=[];
     this.searchToken.skills= this.skills;
-    console.log(this.searchToken);
-    this.auth.searchQuery(this.searchToken).subscribe(result=>{
-      result.forEach(element => {
-        this.jobs.push(element);
+    try {
+      this.auth.searchQuery(this.searchToken).subscribe(result=>{
+        try {
+          result.forEach(element => {
+            this.jobs.push(element);
+          })
+        } catch (error) {
+          console.log("Error encountered\n"+error);
+        }
+      }, error=>{
+        console.log("No search results found\n"+error)
       });
-    })
+    } catch (error) {
+      console.log("Error encountered\n"+error)
+    }
+    
     
     // this.jobList.forEach(result=>{
     //   if(result.skills == this.skills){
@@ -130,13 +148,23 @@ export class SalonComponent implements OnInit {
   }
   searchUsingLocation(){
     this.jobs=[];
-    this.searchToken.location= this.location;
-    console.log(this.searchToken);
-    this.auth.searchQuery(this.searchToken).subscribe(result=>{
-      result.forEach(element => {
-        this.jobs.push(element);
+    this.searchToken.city= this.city;
+    try {
+      this.auth.searchQuery(this.searchToken).subscribe(result=>{
+        try {
+          result.forEach(element => {
+            this.jobs.push(element);
+          })
+        } catch (error) {
+          console.log("Error encountered\n"+error);
+        }
+      },error=>{
+          console.log("No search results found\n"+error);
       });
-    })
+    } catch (error) {
+      console.log("Error encountered\n"+error);
+    }
+    
 
     // this.jobList.forEach(result=>{
     //   if(result.rate >= this.rate){
@@ -144,22 +172,22 @@ export class SalonComponent implements OnInit {
     //   }
     // }) 
   }
-  searchUsingDate(){
-    this.jobs=[];
-    this.searchToken.date= this.date.toDateString();
-    console.log(this.searchToken);
-    this.auth.searchQuery(this.searchToken).subscribe(result=>{
-      result.forEach(element => {
-        this.jobs.push(element);
-      });
-    })
+  // searchUsingDate(){
+  //   this.jobs=[];
+  //   this.searchToken.date= this.date.toDateString();
+  //   console.log(this.searchToken);
+  //   this.auth.searchQuery(this.searchToken).subscribe(result=>{
+  //     result.forEach(element => {
+  //       this.jobs.push(element);
+  //     });
+  //   })
 
-    // this.jobList.forEach(result=>{
-    //   if(result.date == this.date.toDateString()){
-    //     return this.jobs.push(result);
-    //   }
-    // }) 
-  }
+  //   // this.jobList.forEach(result=>{
+  //   //   if(result.date == this.date.toDateString()){
+  //   //     return this.jobs.push(result);
+  //   //   }
+  //   // }) 
+  // }
 
 
 }

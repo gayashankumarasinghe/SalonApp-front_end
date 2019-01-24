@@ -15,7 +15,7 @@ export class AuthenticationService {
   }
 
   searchQuery(token:any): Observable<any>{
-    return this.http.post('/salon/all',token)
+    return this.http.post('/stylist/search',token)
   }
 
   setUserDetails(token:any): Observable<any>{
