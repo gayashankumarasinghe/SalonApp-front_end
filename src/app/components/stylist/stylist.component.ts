@@ -11,7 +11,35 @@ import { AuthenticationService } from '../../Services/authentication.service';
 })
 export class StylistComponent implements OnInit {
   showSpinner=true;
-  // jobs = [{
+ 
+  jobs=[];
+
+  mobileQuery: MediaQueryList;
+  largeQuery: MediaQueryList;
+
+  private _mobileQueryListener: () => void;
+
+  constructor( changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private auth: AuthenticationService ) { 
+    this.mobileQuery = media.matchMedia('(max-width: 767px)');
+    this.largeQuery = media.matchMedia('(min-width: 768px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.largeQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnInit() {
+    this.showSpinner=false;
+    this.auth.getSalonDetails().subscribe(result=>{
+      result.forEach(element=>{
+        this.jobs.push(element)
+      })
+    })
+  }
+
+ 
+}
+
+ // jobs = [{
   //   name: 'HairCool Customs',
   //   distance:'5 km away',
   //   description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
@@ -44,30 +72,3 @@ export class StylistComponent implements OnInit {
   //   place:'Colombo,Sri lanka',
   //   postTime:'posted 10 mins bfr',
   // },];
-
-  jobs=[];
-
-  mobileQuery: MediaQueryList;
-  largeQuery: MediaQueryList;
-
-  private _mobileQueryListener: () => void;
-
-  constructor( changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private auth: AuthenticationService ) { 
-    this.mobileQuery = media.matchMedia('(max-width: 767px)');
-    this.largeQuery = media.matchMedia('(min-width: 768px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-    this.largeQuery.addListener(this._mobileQueryListener);
-  }
-
-  ngOnInit() {
-    this.showSpinner=false;
-    this.auth.getSalonDetails().subscribe(result=>{
-      result.forEach(element=>{
-        this.jobs.push(element)
-      })
-    })
-  }
-
- 
-}

@@ -5,7 +5,7 @@
         <h1>Many well reputed salons are<br> connected with us</h1>
       </div>
       <div class="bottom-line">
-        <a>Browse Top Rated stylists available here!</a>
+        <a> Work with them here!</a>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
   <mat-card *ngFor="let job of jobs" class="materialcard">
     <mat-card-header>
-
+      
       <mat-card-title>{{job.name}}</mat-card-title>
       <mat-card-subtitle style="color:dodgerblue">{{job.email}}</mat-card-subtitle>
       <div style="text-align:center;">
@@ -26,17 +26,21 @@
     </mat-card-header>
     <mat-card-content>
       <ul class="jobs">
+       
         <li>
+          <label for="facebook">FB link :</label>
+          <a href="www.facebook.com" style="color:dodgerblue">{{job.facebook}}</a>
+        </li>
+        <li>
+           <label for="facebook">Website :</label>
+          <a href="www.google.com" style="color:dodgerblue">{{job.website}}</a>
+        </li>
+         <li>
           <label for="description">Description :</label>
           <a #description>{{job.description}}</a>
         </li>
         <li>
-          <a href="www.facebook.com" style="color:dodgerblue">{{job.facebook}}</a>
-        </li>
-        <li>
-          <a href="www.google.com" style="color:dodgerblue">{{job.website}}</a>
-        </li>
-        <li>
+           <label for="fac">Address :</label>
           <a>{{job.street_address}}</a>
         </li>
         <li>
