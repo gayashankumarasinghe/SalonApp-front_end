@@ -14,11 +14,11 @@ export class DashboardComponent implements OnInit {
   }
 
   stylist(){
-    this.router.navigate(['stylist'])
+    this.router.navigate(['get-stylists'])
   }
 
   salon(){
-    this.router.navigate(['salon'])
+    this.router.navigate(['get-salons'])
   }
 
 

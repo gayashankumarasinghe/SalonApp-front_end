@@ -26,4 +26,8 @@ export class AuthenticationService {
     return this.http.get('/salon/all');
   }
 
+  searchFreeDate(token:any): Observable<any>{
+    return this.http.post('/api/booking/v1/check-booking',token)
+  }
+
 }

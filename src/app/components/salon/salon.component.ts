@@ -17,61 +17,34 @@ export class SalonComponent implements OnInit {
    skills:null,
    city:null
  };
+ checkToken={
+   stylistEmail:''
+ }
+ disableDates:Date[]=[];
  rate;
  skills;
  city;
  date;
  rateChecker = 6;
  jobs=[];
-  jobList = [{
-    id:'001',
-    name: 'HairCool Customs',
-    distance:'5 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'250 USD',
-    noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-    rate: 5,
-    skills: 'Barber',
-    date: 'Sat Jan 19 2019'
-  },{
-    id:'002',
-    name: 'HairCool Customs',
-    distance:'250 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'4 USD',
-    noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-    rate: 4,
-    skills: 'Barber',
-    date: 'Sun Jan 20 2019'
-  },{
-    id:'003',
-    name: 'HairCool Customs',
-    distance:'250 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'3 USD',
-    noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-    rate: 3,
-    skills: 'Makeup',
-    date: 'Sat Jan 19 2019'
-  },{
-    id:'004',
-    name: 'HairCool Customs',
-    distance:'5 km away',
-    description:'An offer to hair dress  the groom and the crew on 22nd of January for pre shoots. ',
-    payment:'250 USD',
-    noOfBids:'12 bids per now',
-    place:'Colombo,Sri lanka',
-    postTime:'posted 10 mins bfr',
-    rate: 2,
-    skills: 'DryCutting',
-    date: 'Sun Jan 20 2019'
-  },];
+
+ myFilter = (d: Date): boolean => {
+  var date = new Date();
+  date.setDate(date.getDate());
+  var dates = this.disableDates
+  return date<=d;
+}
+
+myFilter2= (d: Date): boolean => {
+  var date = new Date();
+  date.setDate(date.getDate());
+  for(var i = 0; i < this.disableDates.length; i++){
+    if((this.disableDates[i].getDate()==d.getDate() && this.disableDates[i].getMonth()==d.getMonth() && this.disableDates[i].getFullYear()==d.getFullYear())  || date>=d){
+      return false;
+    }
+  } 
+  return true;
+}
 
   mobileQuery: MediaQueryList;
   largeQuery: MediaQueryList;
@@ -90,13 +63,31 @@ export class SalonComponent implements OnInit {
     this.showSpinner=false;
   }
 
-  salon(x){
-    console.log(x);
+  checkAvailability(email){
+    this.checkToken.stylistEmail=email;
+    console.log(this.checkToken)
+    this.auth.searchFreeDate(this.checkToken).subscribe(result=>{
+      try {
+      result.forEach(element => {
+        var x = new Date(element.bookingDate);
+        // var x=element.bookingDate
+        this.disableDates.push(x)
+        console.log(this.disableDates)
+      });
+    }
+    catch(error){
+      console.log("my error")
+    }
+    })
   }
 
   searchUsingRate(){
     this.jobs=[];
     this.searchToken.rate= this.rate;
+    if(this.rate==0){
+      this.searchToken.rate=null;
+    }
+    console.log(this.searchToken)
     try {
       this.auth.searchQuery(this.searchToken).subscribe(result=>{
         try {
@@ -123,6 +114,10 @@ export class SalonComponent implements OnInit {
   searchUsingSkills(){
     this.jobs=[];
     this.searchToken.skills= this.skills;
+    if(this.skills==undefined){
+      this.searchToken.skills=null;
+    }
+    console.log(this.searchToken)
     try {
       this.auth.searchQuery(this.searchToken).subscribe(result=>{
         try {
@@ -149,6 +144,9 @@ export class SalonComponent implements OnInit {
   searchUsingLocation(){
     this.jobs=[];
     this.searchToken.city= this.city;
+    if(this.city==undefined){
+      this.searchToken.city=null;
+    }
     try {
       this.auth.searchQuery(this.searchToken).subscribe(result=>{
         try {
@@ -172,7 +170,7 @@ export class SalonComponent implements OnInit {
     //   }
     // }) 
   }
-  // searchUsingDate(){
+  searchUsingDate(){console.log(this.date)}
   //   this.jobs=[];
   //   this.searchToken.date= this.date.toDateString();
   //   console.log(this.searchToken);
@@ -188,6 +186,12 @@ export class SalonComponent implements OnInit {
   //   //   }
   //   // }) 
   // }
+  confirmfunction(){
+    
+  }
 
+  checkFunction(){
+    console.log(this.date)
+  }
 
 }

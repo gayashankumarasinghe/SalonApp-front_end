@@ -83,6 +83,10 @@
 .mat-card-header{
 	display: block !important;
 }
+
+::ng-deep .cdk-overlay-container{
+    z-index: 1200 !important;
+}
 .search-img{
 	position: relative;
     padding: 10px 20px 10px 20px;
@@ -131,5 +135,10 @@
         display: block;
 	}
 	
+}
+
+.modal-full-width{
+	position:"relative";
+	width:100%;
 }
 

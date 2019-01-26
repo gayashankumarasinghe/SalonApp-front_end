@@ -27,9 +27,9 @@ import { SalonloginComponent } from './components/salonlogin/salonlogin.componen
 const appRoutes : Routes = [
   
     {path:'',component:DashboardComponent},
-    {path:'stylist',component:StylistComponent},
+    {path:'get-stylists',component:StylistComponent},
     {path:'customer',component:CustomerComponent},
-    {path:'salon',component:SalonComponent},
+    {path:'get-salons',component:SalonComponent},
     {path:'salonlogin',component:SalonloginComponent},
     {path:'stylistlogin',component:StylistloginComponent},
 ];
