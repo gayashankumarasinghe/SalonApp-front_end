@@ -21,14 +21,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class StylistloginComponent implements OnInit {
   details;
   checked = false;
+  stylistEmail?;
+  bookingId;
+  show=true;
+  email={
+    stylistEmail:''
+  };
+
+  
 
    bookings = [
-    {salon: 'D point', date: '4th Feb 2019', city: 'Denver', street: 'Park street', telephone: '077237383'},
-    {salon: 'Splendid',  date: '10th Feb 2019', city: 'Florida', street: 'York Street', telephone: '36553876'},
-    {salon: 'OneZero',  date: '18th Mar 2019', city: 'califonia', street: 'McWood street', telephone: '77257459'},
+    
+    // {salon: 'Splendid',  date: '10th Feb 2019', city: 'Florida', street: 'York Street', telephone: '36553876'},
+    // {salon: 'OneZero',  date: '18th Mar 2019', city: 'califonia', street: 'McWood street', telephone: '77257459'},
     //{name: 'Cupcake', calories: '305', fat: '4', carbs: '67', protein: '4'},
     //{name: 'Gingerbread', calories: '356', fat: '16', carbs: '49', protein: '4'},
-  ];
+   ];
 
   facebookFormControl = new FormControl('', [
     Validators.required,
@@ -44,19 +52,18 @@ export class StylistloginComponent implements OnInit {
   constructor( private auth: AuthenticationService ) { }
 
   ngOnInit() {
-    this.auth.getSalonDetails().subscribe( result=>{
-      console.log(result);
+    this.auth.getStylist(this.stylistEmail).subscribe( result=>{
       result.forEach(element => {
         this.details = element
       });
     })
     this.auth.setUserDetails(this.details).subscribe(data =>{
-      console.log(data)
       if(data == 'available'){
         return this.checked=true;
       }
       return this.checked=false;
     });
+    
   }
 
  stylist(){
@@ -65,5 +72,85 @@ export class StylistloginComponent implements OnInit {
 
   Updatestylist(){
     
+  }
+
+  tempFunc(){
+    this.bookings = [];
+    this.email.stylistEmail = this.stylistEmail;
+    this.auth.bookingForStylist(this.email).subscribe(result=>{
+      try {
+        result.forEach(element => {
+          console.log(element)
+          this.auth.getSalon(element.salonEmail).subscribe(salon=>{
+            var dataUnit={
+              Id:'',
+              salon: '',
+              date: '',
+              city: '',
+              street: '',
+              website: ''
+            }
+            dataUnit.date = element.bookingDate;
+            dataUnit.Id = element.id;
+            dataUnit.salon = salon.name;
+            dataUnit.city = salon.country;
+            dataUnit.street = salon.street_address;
+            dataUnit.website = salon.website;
+            if(element.status =="accept" || element.status =="decline"){
+              return null;
+            }
+            
+            this.bookings.push(dataUnit);
+          }, error=>{
+            console.log("handled "+ error)
+          });
+        });
+      } catch (error) {
+        console.log("ExeptionHandled "+error)
+      }
+    }, error =>{
+      console.error(error);
+      
+    }
+    )
+  }
+
+  accept(id){
+    var token ={
+      bookingId:'',
+      status:''
+    }
+    token.bookingId = id;
+    token.status = "accept";
+    this.auth.acceptingBooking(token).subscribe(result=>{
+      try {
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    });
+    this.tempFunc();
+    alert("You accepted the booking");
+
+  }
+
+  decline(id){
+    var token ={
+      bookingId:'',
+      status:''
+    }
+    token.bookingId = id;
+    token.status = "decline";
+    this.auth.acceptingBooking(token).subscribe(result=>{
+      try {
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    });
+    this.tempFunc();
+    alert("You Declined the booking");
   }
 }

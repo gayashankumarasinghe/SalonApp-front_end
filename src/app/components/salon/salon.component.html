@@ -126,13 +126,20 @@
           <div>
             <mat-form-field class="modal-full-width">
               <label for="calender">Date</label><br>
-              <input #calender matInput [matDatepickerFilter]="myFilter2" [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="searchUsingDate()" disabled>
+              <input #calender matInput [matDatepickerFilter]="myFilter2" [matDatepicker]="picker" [(ngModel)]="date" disabled>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker touchUi="true" #picker disabled="false"></mat-datepicker>
             </mat-form-field>
           </div>
 
-          <button class="btn btn-success" data-dismiss="modal" (click)="confirmFunction()">Confirm and request</button>
+          <div class="form-wrap">
+            <mat-form-field class="modal-full-width">
+              <input matInput name="salonEmail" placeholder="Enter email" [(ngModel)]="salonEmail" >
+            </mat-form-field>
+          </div>
+          {{bookingSuccessMessage}}<br>
+
+          <button class="btn btn-success" (click)="confirmFunction()">Confirm and request</button>
           <br>
           <div class="modal-full-width footer">
             <a>

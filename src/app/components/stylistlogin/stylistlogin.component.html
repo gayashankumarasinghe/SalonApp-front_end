@@ -40,6 +40,8 @@
           <div class="info-group">
             <label class="col-sm-3 control-label">Email : </label>
             <p class="form-control-static">{{ details?.email }}</p>
+            <input mat-input type="text" placeholder="Enter Email" [(ngModel)]="stylistEmail">
+            <button class="btn btn-primary" (click)="tempFunc()">Submit</button>
           </div>
           <div class="info-group">
             <label class="col-sm-3 control-label">Role : </label>
@@ -56,27 +58,23 @@
     </mat-card>
 
     <mat-card class="card">
-      <table class="booking-table" matSort (matSortChange)="sortData($event)">
+      <table mat-sort class="booking-table" matSort (matSortChange)="sortData($event)">
         <tr>
-          <th mat-sort-header="salon">Salon</th>
-          <th mat-sort-header="date">Date</th>
-          <th mat-sort-header="city">City</th>
-          <th mat-sort-header="street">Street</th>
-          <th mat-sort-header="telephone">Telephone</th>
-          <th></th>
-          <th></th>
+          <th class="table-head" mat-sort-header="salon">Salon</th>
+          <th class="table-head" mat-sort-header="date">Date</th>
+          <th class="table-head" mat-sort-header="city">City</th>
+          <th class="table-head" mat-sort-header="street">Street</th>
+          <th class="table-head" mat-sort-header="telephone">Website</th>
         </tr>
 
         <tr *ngFor="let booking of bookings">
-          <td>{{booking.salon}}</td>
-          <td>{{booking.date}}</td>
-          <td>{{booking.city}}</td>
-          <td>{{booking.street}}</td>
-          <td>{{booking.telephone}}</td>
-          <a class="btn btn-lg btn-success">Accept</a>
-          <a class="btn btn-lg btn-danger">Decline</a>
-          <!-- <a routerLink="/adminPromotion" href="#"   class="btn btn-lg btn-success"><i class=" fa fa-plus"></i> List Promotions</a> -->
-          <!-- <td><a [routerLink]="['/client-details/'+client.$key]" href="" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i> Details</a></td> -->
+          <td class="table-content">{{booking.salon}}</td>
+          <td class="table-content">{{booking.date}}</td>
+          <td class="table-content">{{booking.city}}</td>
+          <td class="table-content">{{booking.street}}</td>
+          <td class="table-content">{{booking.website}}</td>
+          <td class=""><a class="btn btn-success btn-lg table-content"  (click)="accept(booking.Id)">Accept</a></td>
+          <td class=""><a class="btn btn-danger btn-lg table-content" (click)="decline(booking.Id)">Decline</a></td>
         </tr>
       </table>
     </mat-card>

@@ -79,8 +79,22 @@
   text-align: center;
 }
 
+.table-content{
+  font-size:0.8em;
+  white-space: nowrap;
+}
 
-@media only screen and (max-width: 800px) {
+.mat-sort-header-container {
+  align-items: center;
+}
+
+.table-head{
+  min-width:110px;
+  white-space: nowrap;
+}
+
+
+@media only screen and (max-width: 1000px) {
   .bottom-line {
     position: absolute;
     top: 500px;
@@ -100,7 +114,7 @@
     position: absolute;
     display: -webkit-box;
     margin: 0 auto;
-    width: 100%;
+    // width: 100%;
   }
 
   .results {

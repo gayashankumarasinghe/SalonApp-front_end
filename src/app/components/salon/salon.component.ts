@@ -17,34 +17,46 @@ export class SalonComponent implements OnInit {
    skills:null,
    city:null
  };
+
+
  checkToken={
    stylistEmail:''
- }
+ };
+
+
+ confirmToken={
+   stylistEmail:'',
+   salonEmail:'',
+   bookingDate:''
+ };
+
+
  disableDates:Date[]=[];
+
+
  rate;
  skills;
  city;
  date;
+ stylistEmail;
+ salonEmail;
+
  rateChecker = 6;
+ bookingSuccessMessage?;
+
+
  jobs=[];
 
- myFilter = (d: Date): boolean => {
-  var date = new Date();
-  date.setDate(date.getDate());
-  var dates = this.disableDates
-  return date<=d;
-}
-
-myFilter2= (d: Date): boolean => {
-  var date = new Date();
-  date.setDate(date.getDate());
-  for(var i = 0; i < this.disableDates.length; i++){
-    if((this.disableDates[i].getDate()==d.getDate() && this.disableDates[i].getMonth()==d.getMonth() && this.disableDates[i].getFullYear()==d.getFullYear())  || date>=d){
-      return false;
-    }
-  } 
-  return true;
-}
+  myFilter2= (d: Date): boolean => {
+    var date = new Date();
+    date.setDate(date.getDate());
+    for(var i = 0; i < this.disableDates.length; i++){
+      if((this.disableDates[i].getDate()==d.getDate() && this.disableDates[i].getMonth()==d.getMonth() && this.disableDates[i].getFullYear()==d.getFullYear())  || date>=d){
+        return false;
+      }
+    } 
+    return true;
+  }
 
   mobileQuery: MediaQueryList;
   largeQuery: MediaQueryList;
@@ -64,14 +76,15 @@ myFilter2= (d: Date): boolean => {
   }
 
   checkAvailability(email){
-    this.checkToken.stylistEmail=email;
+    this.disableDates = [];
+    this.stylistEmail = email;
+    this.checkToken.stylistEmail = this.stylistEmail;
     console.log(this.checkToken)
     this.auth.searchFreeDate(this.checkToken).subscribe(result=>{
       try {
       result.forEach(element => {
-        var x = new Date(element.bookingDate);
-        // var x=element.bookingDate
-        this.disableDates.push(x)
+        var date = new Date(element.bookingDate);
+        this.disableDates.push(date)
         console.log(this.disableDates)
       });
     }
@@ -103,14 +116,9 @@ myFilter2= (d: Date): boolean => {
     } catch (error) {
       console.log("Error encountered\n"+error);
     }
-    
-    
-    // this.jobList.forEach(result=>{
-    //   if(result.rate >= this.rate){
-    //     return this.jobs.push(result);
-    //   }
-    // }) 
   }
+
+
   searchUsingSkills(){
     this.jobs=[];
     this.searchToken.skills= this.skills;
@@ -133,14 +141,9 @@ myFilter2= (d: Date): boolean => {
     } catch (error) {
       console.log("Error encountered\n"+error)
     }
-    
-    
-    // this.jobList.forEach(result=>{
-    //   if(result.skills == this.skills){
-    //     return this.jobs.push(result);
-    //   }
-    // }) 
   }
+
+
   searchUsingLocation(){
     this.jobs=[];
     this.searchToken.city= this.city;
@@ -162,32 +165,26 @@ myFilter2= (d: Date): boolean => {
     } catch (error) {
       console.log("Error encountered\n"+error);
     }
-    
-
-    // this.jobList.forEach(result=>{
-    //   if(result.rate >= this.rate){
-    //     return this.jobs.push(result);
-    //   }
-    // }) 
+     
   }
-  searchUsingDate(){console.log(this.date)}
-  //   this.jobs=[];
-  //   this.searchToken.date= this.date.toDateString();
-  //   console.log(this.searchToken);
-  //   this.auth.searchQuery(this.searchToken).subscribe(result=>{
-  //     result.forEach(element => {
-  //       this.jobs.push(element);
-  //     });
-  //   })
+  
+  confirmFunction(){
+    this.confirmToken.stylistEmail = this.stylistEmail;
+    this.confirmToken.salonEmail = this.salonEmail;
+    this.confirmToken.bookingDate = this.date;
 
-  //   // this.jobList.forEach(result=>{
-  //   //   if(result.date == this.date.toDateString()){
-  //   //     return this.jobs.push(result);
-  //   //   }
-  //   // }) 
-  // }
-  confirmfunction(){
-    
+    this.auth.bookingConfirm(this.confirmToken).subscribe(result=>{
+      try {
+        this.bookingSuccessMessage = result;
+      } catch (error) {
+        this.bookingSuccessMessage = error;
+      }
+      
+    },error=>{
+      this.bookingSuccessMessage = error;
+    });
+
+    this.checkAvailability(this.stylistEmail);
   }
 
   checkFunction(){

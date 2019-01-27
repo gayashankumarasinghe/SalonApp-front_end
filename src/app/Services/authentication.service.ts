@@ -25,12 +25,36 @@ export class AuthenticationService {
     return this.http.post('/salon/user-data',token);
   }
 
+  getSalon(email:String): Observable<any>{
+    return this.http.post('/salon/salon-details', email);
+  }
+
+  getStylist(email:String): Observable<any>{
+    return this.http.post('/salon/stylist-details', email);
+  }
+
   getSalonDetails(): Observable<any>{
     return this.http.get('/salon/all');
   }
 
   searchFreeDate(token:any): Observable<any>{
     return this.http.post('/api/booking/v1/check-booking',token)
+  }
+
+  bookingConfirm(token:any): Observable<any>{
+    return this.http.post('/api/booking/v1/confirm-booking',token)
+  }
+
+  bookingBySalon(token:any): Observable<any>{
+    return this.http.post('/api/booking/v1/check-status',token)
+  }
+
+  bookingForStylist(token:any): Observable<any>{
+    return this.http.post('/api/booking/v1/check-booking',token)
+  }
+
+  acceptingBooking(token:any): Observable<any>{
+    return this.http.post('/api/booking/v1/response-booking',token)
   }
 
   authentication(credentials, callback) {
