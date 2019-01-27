@@ -30,8 +30,8 @@ const appRoutes : Routes = [
     {path:'get-stylists',component:StylistComponent},
     {path:'customer',component:CustomerComponent},
     {path:'get-salons',component:SalonComponent},
-    {path:'salonlogin',component:SalonloginComponent},
-    {path:'stylistlogin',component:StylistloginComponent},
+    {path:'get-salonlogin',component:SalonloginComponent},
+    {path:'get-stylistlogin',component:StylistloginComponent},
 ];
 
 

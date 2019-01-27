@@ -23,9 +23,9 @@ export class StylistloginComponent implements OnInit {
   checked = false;
 
    bookings = [
-    {salon: 'Frozen yogurt', date: '159', city: '6', street: '24', telephone: '4'},
-    {salon: 'Ice cream sandwich',  date: '237', city: '9', street: '37', telephone: '4'},
-    {salon: 'Eclair',  date: '262', city: '16', street: '24', telephone: '6'},
+    {salon: 'D point', date: '4th Feb 2019', city: 'Denver', street: 'Park street', telephone: '077237383'},
+    {salon: 'Splendid',  date: '10th Feb 2019', city: 'Florida', street: 'York Street', telephone: '36553876'},
+    {salon: 'OneZero',  date: '18th Mar 2019', city: 'califonia', street: 'McWood street', telephone: '77257459'},
     //{name: 'Cupcake', calories: '305', fat: '4', carbs: '67', protein: '4'},
     //{name: 'Gingerbread', calories: '356', fat: '16', carbs: '49', protein: '4'},
   ];

@@ -44,7 +44,7 @@
           <div class="info-group">
             <label class="col-sm-3 control-label">Availability : </label>
             <mat-slide-toggle [(ngModel)]="checked" [color]="primary" (change)="changed()">
-              Slide to ajust availability status
+              Slide to adjust availability status
             </mat-slide-toggle>
           </div>
         </div>
@@ -59,6 +59,8 @@
           <th mat-sort-header="city">City</th>
           <th mat-sort-header="street">Street</th>
           <th mat-sort-header="telephone">Telephone</th>
+          <th></th>
+          <th></th>
         </tr>
 
         <tr *ngFor="let booking of bookings">
@@ -67,6 +69,10 @@
           <td>{{booking.city}}</td>
           <td>{{booking.street}}</td>
           <td>{{booking.telephone}}</td>
+          <a class="btn btn-lg btn-success">Accept</a>
+          <a class="btn btn-lg btn-danger">Decline</a>
+          <!-- <a routerLink="/adminPromotion" href="#"   class="btn btn-lg btn-success"><i class=" fa fa-plus"></i> List Promotions</a> -->
+          <!-- <td><a [routerLink]="['/client-details/'+client.$key]" href="" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i> Details</a></td> -->
         </tr>
       </table>
     </mat-card>
