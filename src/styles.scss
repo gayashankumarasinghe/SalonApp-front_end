@@ -15,6 +15,11 @@
 body{
     min-width: 450px;
 }
+
+.cdk-overlay-container{
+    z-index: 1200 !important;
+}
+
 @font-face {
     font-family: 'MontserratAlternates';
     src: url(./assets/Fonts/MontserratAlternates-Regular.otf) format("opentype");
