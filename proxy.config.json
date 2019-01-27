@@ -2,25 +2,21 @@
   "/salon/*": {
     "target": "http://localhost:8080",
     "secure": false,
-    "logLevel": "debug",
-    "exact": true
+    "logLevel": "debug"
   },
   "/stylist/*": {
     "target": "http://localhost:8080",
     "secure": false,
-    "logLevel": "debug",
-    "exact": true
+    "logLevel": "debug"
   },
-  "/api/booking/v1/":{
+  "/api/booking/v1/*":{
     "target": "http://localhost:8082",
     "secure": false,
-    "logLevel": "debug",
-    "exact": true
+    "logLevel": "debug"
   },
-  "/api/login":{
+  "/api/login/*":{
     "target": "http://localhost:8081",
     "secure": false,
-    "logLevel": "debug",
-    "exact": true
+    "logLevel": "debug"
   }
 }

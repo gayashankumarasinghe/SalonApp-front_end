@@ -140,17 +140,15 @@
             </mat-form-field>
           </div>
 
- <!--issue this is come under the form -->
           <div class="form-wrap">
             <mat-form-field class="modal-full-width">
-                    <label for="City">City</label><br>
-                    <mat-select #options [(value)]="city" (change)="searchUsingSkills()" >
-                    <mat-option value="Denver">Denver</mat-option>
-                    <mat-option value="LasWegas">Las-Wegas</mat-option>
-                    <mat-option value="SilicaSand">Silica Sand</mat-option>
-                    <mat-option value="Yellowcity">Yellow City</mat-option>
-                    </mat-select>
-              
+              <label for="City">City</label><br>
+              <mat-select #options [(value)]="city" (change)="searchUsingSkills()" >
+              <mat-option value="Denver">Denver</mat-option>
+              <mat-option value="LasWegas">Las-Wegas</mat-option>
+              <mat-option value="SilicaSand">Silica Sand</mat-option>
+              <mat-option value="Yellowcity">Yellow City</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
 
