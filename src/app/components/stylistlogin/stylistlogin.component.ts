@@ -63,4 +63,7 @@ export class StylistloginComponent implements OnInit {
     //this.http.navigate(['stylist'])
   }
 
+  Updatestylist(){
+    
+  }
 }
